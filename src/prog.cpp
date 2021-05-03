@@ -1,8 +1,7 @@
-#include <iostream>
 #include <ctime>
-#include"Lst.hpp"
+#include"tree.hpp"
 using namespace std;
-void WriteRoots(Dugum* root,string Str)
+void WriteRoots(Node* root,string Str)
 {
 	if(root->child1!=NULL)
 	{
@@ -29,27 +28,28 @@ void WriteRoots(Dugum* root,string Str)
 int main()
 { 
 	srand(time(0));
-	Lst* l1=new Lst();
+	Tree* t1=new Tree();
 	int lenght;
 	cout<<"Enter how many node you want to add in random tree:"<<endl;
 	cin>>lenght;
-	int eleman;
+	int newNode_data;
 	for(int i=0;i<lenght;i++)
 	{
 		cout<<endl<<"Enter node data:"<<endl;
-		cin>>eleman;
-		Dugum* newNode=new Dugum(eleman);
+		cin>>newNode_data;
+		Node* newNode=new Node(newNode_data);
 		if(i==0)
 		{
-			l1->root=newNode;
-			l1->size++;
+			t1->root=newNode;
+			t1->size++;
 		}
 		else
 		{
-			l1->RandomlyADD(newNode,&(l1->root));
+			t1->RandomlyADD(newNode,&(t1->root));
 		}
 	}
-	WriteRoots(l1->root,"root");
-	l1->Destroy();
+	WriteRoots(t1->root,"root");
+	t1->Destroy();
+	system("pause");
 	return 0;
 }
